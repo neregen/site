@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backend developer</title>
+<meta name="description" content="Python backend developer. FastAPI, PostgreSQL, Docker.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0e0f;--line:#262628;--muted:#85858c;--text:#cfcfd3;--white:#f2f2f3}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:17px/1.7 'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--white);outline-offset:4px}
+::selection{background:var(--white);color:var(--bg)}
+
+.wrap{max-width:640px;margin:0 auto;padding:0 24px}
+
+nav{padding:36px 0;display:flex;gap:28px;font-size:15px}
+nav a{color:var(--muted);text-decoration:none;transition:color .2s}
+nav a:hover{color:var(--white)}
+
+header{padding:15vh 0 12vh;animation:in 1s ease both}
+h1{font:400 clamp(42px,8vw,68px)/1.05 'Instrument Serif',Georgia,serif;color:var(--white);letter-spacing:-.02em}
+header p{margin-top:28px;font-size:19px;max-width:30em}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:14px;font-weight:500;color:var(--muted);margin-bottom:20px}
+section p+p{margin-top:16px}
+
+.stack{list-style:none}
+.stack li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;transition:padding-left .25s}
+.stack li:first-child{padding-top:0}
+.stack li:last-child{border-bottom:0}
+.stack li:hover{padding-left:8px}
+.stack b{font-weight:500;color:var(--white)}
+.stack span{color:var(--muted);font-size:15px}
+
+.mail{display:inline-block;margin-top:6px;font:400 clamp(26px,5vw,36px)/1.2 'Instrument Serif',Georgia,serif;color:var(--white);text-decoration:none;border-bottom:1px solid var(--muted);transition:border-color .2s}
+.mail:hover{border-color:var(--white)}
+#note{display:block;margin-top:10px;font-size:14px;color:var(--muted);min-height:22px}
+
+footer{padding:40px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:560px){.stack li{flex-direction:column;gap:2px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}header{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a href="#about">About</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header>
+    <h1>Backend developer, working mostly with Python.</h1>
+    <p>I build APIs and the databases behind them. Right now that means FastAPI and PostgreSQL, usually shipped in Docker.</p>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>I've been writing backend code for more than three years. I like projects where the data model matters and the service has to keep running without someone babysitting it.</p>
+    <p>I care about code that is easy to read a few months later, and about setups that start with a single command.</p>
+  </section>
+
+  <section id="stack">
+    <h2>Stack</h2>
+    <ul class="stack">
+      <li><b>Python</b><span>my main language</span></li>
+      <li><b>FastAPI</b><span>APIs and async services</span></li>
+      <li><b>PostgreSQL</b><span>schemas, queries, indexes</span></li>
+      <li><b>Docker</b><span>dev environments and deploys</span></li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email is the best way to reach me.</p>
+    <a class="mail" href="mailto:neregenka@gmail.com" id="mail">neregenka@gmail.com</a>
+    <span id="note"></span>
+  </section>
+
+  <footer>© <span id="year"></span></footer>
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const note = document.getElementById('note');
+document.getElementById('mail').addEventListener('click', () => {
+  if (!navigator.clipboard) return;
+  navigator.clipboard.writeText('neregenka@gmail.com').then(() => {
+    note.textContent = 'Copied to clipboard';
+    setTimeout(() => note.textContent = '', 2000);
+  }).catch(() => {});
+});
+</script>
+</body>
+</html>
